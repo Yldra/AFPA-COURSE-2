@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <button id="recup">recup datas</button>
+    <div id="resultat"></div>
+    <input type="text" id="text1" />
+    <script>
+      // Attend que le document soit prêt
+      $(document).ready(function () {
+        // Lorsque le bouton "recup" est cliqué
+        $("#recup").click(function () {
+          // Effectue une requête GET sur une URL, par exemple, "http://localhost:8089/jsf"
+          axios
+            .get("http://localhost:8089/jsf")
+            .then((response) => {
+              // Traitement de la réponse de la requête
+              response.data.forEach((shop) => {
+                // Ajoute le nom du magasin, le tiroir et le ticket à la division "resultat"
+                $("#resultat").append(shop.shop_name + "<br>");
+                $("#resultat").append(shop.drawer + "<br>");
+                $("#resultat").append(shop.ticket + "<br><hr>");
+              });
+            })
+            .catch((error) => console.log(error));
+        });
+
+        // Lorsque le champ de texte perd le focus
+        $("input").blur(function () {
+          // Affiche dans la console la valeur du champ de texte
+          console.log("res:", $(this).val());
+          // Effectue une requête POST avec la valeur du champ de texte vers "http://localhost:8089/datas"
+          axios.post("http://localhost:8089/datas", { data: $(this).val() });
+        });
+      });
+    </script>
+  </body>
+</html>

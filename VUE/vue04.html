@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>VueJS</title>
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	</head>
+	<body>
+		<div id="compteur">
+			<h1>Ready ? Click !</h1>
+			<p>Nombre de click:</p>
+			<compteur></compteur>
+		</div>
+
+		<script>
+			const app = Vue.createApp({});
+
+			app.component("compteur", {
+				data() {
+					return {
+						count: 0
+					};
+				},
+				template: `<button @click="count++"> Click : {{ count }} </button>`
+			});
+
+			app.mount("#compteur");
+		</script>
+	</body>
+</html>

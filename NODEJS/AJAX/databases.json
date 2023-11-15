@@ -1,0 +1,36 @@
+[
+    {
+        "shop_id": 1775,
+        "shop_name": "Little Marcel",
+        "drawer": 1,
+        "ticket": 3433,
+        "status": "success"
+    },
+    {
+        "shop_id": 1776,
+        "shop_name": "Basket",
+        "drawer": 1,
+        "ticket": 5433,
+        "status": "success"
+    },
+    {
+        "shop_id": 1779,
+        "toto": {
+            "cleé": "évaleur",
+            "xxx": "fff"
+        },
+        "shop_name": "vaposhop",
+        "drawer": 2,
+        "ticket": 435,
+        "status": "success"
+    },
+    {
+        "shop_id": 1779,
+        "shop_name": "vaposhop",
+        "drawer": 2,
+        "ticket": 436,
+        "status": "fail",
+        "error": "message derreur",
+        "element": "truc"
+    }
+]

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>VueJS</title>
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p v-show="montremoi">SHOW : JE DEFINIS QUI PEUT VOIR CE MESSAGE</p>
+
+            <p v-if="montremoi">IF : TU PEUX VOIR CE MESSAGE</p>
+            <p v-else>ELSE : LA TU PEUX PAS AHAH</p>
+
+            <!-- Bouton pour basculer montremoi de false à true -->
+            <button @click="toggleMontreMoi">Basculer</button>
+		</div>
+
+		<script>
+			const { createApp } = Vue;
+
+			createApp({
+				data() {
+					return {
+						montremoi: false
+					};
+				},
+
+				computed: {},
+
+				methods: {
+                    toggleMontreMoi() {
+						this.montremoi = !this.montremoi;
+					}
+                }
+			}).mount("#app");
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>VueJS</title>
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	</head>
+	<body>
+		<div id="blog">
+			<blogtitle title="Article 1"></blogtitle>
+			<blogpost post="Brian le Magnifique"></blogpost>
+
+			<blogtitle title="Article 2"></blogtitle>
+			<blogpost post="Brian le Fabuleux"></blogpost>
+            
+			<blogtitle title="Article 3"></blogtitle>
+			<blogpost post="Brian le Génie"></blogpost>
+		</div>
+
+		<script>
+			const app = Vue.createApp({});
+
+			app.component("blogtitle", {
+				props: ["title"],
+				template: `<h1> {{ title }} </h1>`
+			});
+			app.component("blogpost", {
+				props: ["post"],
+				template: `<p> {{ post }} <p>`
+			});
+
+			app.mount("#blog");
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>VueJS</title>
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input v-model="nom" placeholder="écrire un nom" />
+			<h1>{{ nom }}</h1>
+			<p>Voici la donnée : <strong> {{ nom }} </strong></p>
+			<button @click="ajoute">Ajoute le message</button>
+			<div v-for="(message, index) in messages" :key="index">
+				<p>{{ message }}</p>
+			</div>
+			<hr />
+		</div>
+
+		<script>
+			const { createApp } = Vue;
+
+			createApp({
+				data() {
+					return {
+						nom: "",
+						messages: []
+					};
+				},
+
+				computed: {},
+
+				methods: {
+					ajoute() {
+						this.nom = "Brian galère."
+						this.messages.push("Brian est mal réveillé.");
+						this.messages.push("Brian est pas doué.");
+					}
+				}
+			}).mount("#app");
+		</script>
+	</body>
+</html>

@@ -1,0 +1,13 @@
+<%- include('partials/head') %>
+<h1>Liste des animaux</h1>
+<a href="/form_crea">Création d'Animal</a>
+<% animaux.forEach(function(animal) { %>
+<hr />
+<img src="/pictures/<%= animal.image %>" width="250px" height="200px" />
+<h3><%= animal.nom %></h3>
+<a href="/animal/<%= animal.id %>">Voir les détails</a>
+<br />
+<a href="/form_modif/<%= animal.id %>">Modifier</a>
+<br />
+<a href="/suppr_animal/<%= animal.id %>">Supprimer</a>
+<% }) %> <%- include('partials/footer') %>

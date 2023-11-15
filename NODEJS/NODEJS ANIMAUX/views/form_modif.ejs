@@ -1,0 +1,30 @@
+<%- include ('partials/head') %>
+
+<div class="jumbotron">
+  <h1>Modification Animal dans la Base de Données</h1>
+</div>
+<div>
+  <form class="text-center" action="/modif_animal/<%= animal.id %>" method="post">
+    <label for="nom">Nom</label>
+    <input type="text" name="nom" id="nom" value="<%= animal.nom %>" />
+
+    <label for="image">Image</label>
+    <input type="text" name="image" id="image" value="<%= animal.image %>" />
+
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" value="<%= animal.description %>" />
+
+    <label for="espece_id">Espèce</label>
+    <select name="espece_id" id="espece_id">
+      <option value="1" <% if (animal.espece_id === 1) { %>selected<% } %>>Mammifères</option>
+      <option value="2" <% if (animal.espece_id === 2) { %>selected<% } %>>Poissons</option>
+      <option value="3" <% if (animal.espece_id === 3) { %>selected<% } %>>Oiseaux</option>
+      <option value="4" <% if (animal.espece_id === 4) { %>selected<% } %>>Reptiles</option>
+      <option value="5" <% if (animal.espece_id === 5) { %>selected<% } %>>Insectes</option>
+      <option value="6" <% if (animal.espece_id === 6) { %>selected<% } %>>Arachnides</option>
+    </select>
+
+    <input type="submit" name="envoi" value="Enregistrer les modifications" />
+  </form>
+  <%- include ('partials/footer') %>
+</div>

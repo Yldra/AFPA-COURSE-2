@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>VueJS</title>
+		<!-- VERSION 2.7 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script> -->
+		<!-- VERSION 3 -->
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	</head>
+	<body>
+		<!--
+            <div id="app">
+			<h1>{{ title }}</h1>
+			<p>{{ nom }}</p>
+			<p>{{ paragraphe }}</p>
+			<p v-html="attack"></p>
+		</div>
+
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					title: "VUE Version 2.7",
+					nom: "Brian KERGUTUL",
+					paragraphe: "Pro-gamer de père en fils.",
+					attack:
+						'<a onmouseover=alert("SURPLUS_DE_SKILL_DETECTE")>Trop de talent par ici...</a>'
+				}
+			});
+		</script> -->
+
+		<div id="app">
+			<h1>{{ title }}</h1>
+			<p>{{ message }}</p>
+			<p v-html="attack"></p>
+			<a v-bind:href="url" target="_blank">Clique ici</a> <br />
+			<hr />
+
+			<ul>
+				<li v-for="elt in elts">{{ elt }}</li>
+			</ul>
+			<hr />
+
+			<button v-on:click="showMessage">Afficher le message</button>
+			<hr />
+
+			<button @click="Count('increase')">Increase</button>
+			<button @click="Count('decrease')">Decrease</button>
+            <button @click="Count('increase4')">Increase 4</button>
+			<p>{{ count }} est {{ etatComputed }}</p>
+			<hr />
+		</div>
+
+		<script>
+			const { createApp } = Vue;
+
+			createApp({
+				data() {
+					return {
+						title: "VUE Version 3",
+						message: "Brian est génial.",
+						attack:
+							'<a onmouseover=alert("SURPLUS_DE_SKILL_DETECTE")>Trop de talent par ici...</a>',
+						url: "https://twitch.tv/hail_yldra",
+						elts: [
+							"twitch.tv/hail_yldra",
+							"twitter/@yldrael",
+							"youtube/@yldra"
+						],
+						count: 0,
+                        // etat: '',
+					};
+				},
+
+                computed: {
+                    // etatComputed est ici une fonction mais considérée comme une variable
+                    // qui peut être interpollée
+                    // ces fonctions ne peuvent pas avoir d'arguments
+                    etatComputed() {
+                        return this.count < 0 ? 'négatif' : 'positif'
+                    }
+                },
+
+				methods: {
+					showMessage() {
+						alert(this.message);
+					},
+					Count(operation) {
+						if (operation === "increase") {
+							this.count++;
+                            // this.etat = this.count < 0 ? 'negatif' : 'positif'
+
+						} else if (operation === "decrease") {
+							this.count--;
+                            // this.etat = this.count < 0 ? 'negatif' : 'positif'
+
+						} else if (operation === "increase4") {
+			                this.count += 4;
+					    }
+				    }
+                },
+
+                
+			}).mount("#app");
+		</script>
+	</body>
+</html>

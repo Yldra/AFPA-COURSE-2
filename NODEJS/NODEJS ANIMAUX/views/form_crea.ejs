@@ -1,0 +1,31 @@
+<%- include ('partials/head') %>
+
+<div class="jumbotron">
+  <h1>Création Animal dans la Base de Données.</h1>
+</div>
+<div>
+  <form class="text-center" action="crea_animal" method="post">
+    <label for="nom">Nom</label>
+    <input type="text" name="nom" id="nom" />
+
+    <label for="image">Image</label>
+    <input type="text" name="image" id="image" />
+
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" />
+
+    <label for="espece_id">Espèce</label>
+    <select name="espece_id" id="espece_id">
+      <option value="1">Mammifères</option>
+      <option value="2">Poissons</option>
+      <option value="3">Oiseaux</option>
+      <option value="4">Reptiles</option>
+      <option value="5">Insectes</option>
+      <option value="6">Arachnides</option>
+    </select>
+
+    <input type="submit" name="envoi" value="Envoyer" />
+  </form>
+
+  <%- include ('partials/footer') %>
+</div>

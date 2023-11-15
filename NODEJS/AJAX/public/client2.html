@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulaire d'authentification</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form id="loginForm">
+      <label for="email">E-mail :</label>
+      <input type="email" id="email" name="email" required />
+      <br />
+      <label for="password">Mot de passe :</label>
+      <input type="password" id="password" name="password" required />
+      <br />
+      <button id="submitBtn" type="button">Se connecter</button>
+    </form>
+    <div id="resultat"></div>
+    <script>
+      $(document).ready(function () {
+        $("#submitBtn").click(function () {
+          const email = $("#email").val();
+          const password = $("#password").val();
+
+          axios
+            .post("http://localhost:8089/authenticate", {
+              email: email,
+              password: password,
+            })
+            .then((response) => {
+              if (response.data.success) {
+                $("#resultat").text("Connexion réussie !");
+              } else {
+                $("#resultat").text(
+                  "Identifiants incorrects. Veuillez réessayer."
+                );
+              }
+            })
+            .catch((error) => console.log(error));
+        });
+      });
+    </script>
+  </body>
+</html>
